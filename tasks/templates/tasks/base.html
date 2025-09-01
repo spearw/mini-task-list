@@ -1,0 +1,17 @@
+{% load django_htmx %}
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Task List</title>
+    {% htmx_script %}
+    <link rel="stylesheet" href="{% static 'tasks/style.css' %}">
+  </head>
+  <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
+    <h1>Mini Task List</h1>
+
+    {% block content %}{% endblock %}
+  </body>
+</html>
