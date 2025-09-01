@@ -1,0 +1,27 @@
+<tr id="task-{{ task.id }}">
+  <td class="{% if task.completed %}completed{% endif %}">
+      <form
+              method="post"
+              action="{% url 'toggle-task' task.pk %}"
+              hx-post="{% url 'toggle-task' task.pk %}"
+              hx-target="#task-{{ task.id }}"
+              hx-swap="outerHTML"
+              style="display:inline;"
+      >
+          {% csrf_token %}
+          <button type="submit">
+              {% if task.completed %}&check;{% else %}&ZeroWidthSpace;{% endif %}
+          </button>
+      </form>
+    <a
+      href="{% url 'edit-task-form' task.pk %}"
+      hx-get="{% url 'edit-task-form' task.pk %}"
+      hx-target="#task-{{ task.id }}"
+      hx-swap="outerHTML"
+      class="plain-text"
+    >
+      {{ task.title }}
+    </a>
+  </td>
+  <td>{% if task.completed %}Yes{% else %}No{% endif %}</td>
+</tr>

@@ -1,0 +1,31 @@
+<tr id="task-{{ task.id }}">
+  <td colspan="3">
+    <form
+      method="post"
+      action="{% url 'edit-task' task.pk %}"
+      hx-post="{% url 'edit-task' task.pk %}"
+      hx-target="#task-{{ task.id }}"
+      hx-swap="outerHTML"
+      style="display: inline"
+    >
+      {% csrf_token %} {{ form.title }}
+      <button type="submit">Save</button>
+      <a href="{% url 'task-list' %}" class="button">Cancel</a>
+      {% if form.title.errors %}
+      <div class="error">{{ form.title.errors.as_text }}</div>
+      {% endif %}
+    </form>
+    <form
+      method="post"
+      action="{% url 'delete-task' task.pk %}"
+      hx-post="{% url 'delete-task' task.pk %}"
+      hx-target="closest tr"
+      hx-swap="outerHTML"
+      hx-confirm="Are you sure you want to delete this task?"
+      style="display: inline;"
+    >
+      {% csrf_token %}
+      <button type="submit" class="btn">Delete</button>
+    </form>
+  </td>
+</tr>

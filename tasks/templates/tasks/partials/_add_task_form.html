@@ -1,0 +1,12 @@
+<form
+  method="post"
+  action="{% url 'add-task' %}"
+  hx-post="{% url 'add-task' %}"
+  hx-target="#task-list-table"
+  hx-swap="beforeend"
+  hx-on::after-request="this.reset()"
+>
+  {% csrf_token %}
+    {{ form.as_table }}
+  <button type="submit">Save</button>
+</form>

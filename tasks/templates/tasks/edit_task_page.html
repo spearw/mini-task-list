@@ -1,0 +1,23 @@
+{% extends "tasks/base.html" %} {% block content %}
+<div id="add-task-container">
+  <a href="{% url 'add-task-form' %}" role="button" class="button">Add Task</a>
+</div>
+<div>
+  <table id="task-list-table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody id="task-list-body">
+      {% for task_item in tasks %}
+        {% if task_item.id == task.id %}
+            {% include "tasks/partials/_task_edit_form.html" %}
+        {% else %}
+            {% include "tasks/partials/_task_row.html" with task=task_item %} {% endif %}
+      {%endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

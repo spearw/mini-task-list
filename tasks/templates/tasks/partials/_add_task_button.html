@@ -1,0 +1,12 @@
+<div id="add-task-container">
+    <a
+            href="{% url 'add-task-form' %}"
+            hx-get="{% url 'add-task-form' %}"
+            hx-target="#add-task-container"
+            hx-swap="innerHTML"
+            role="button"
+            class="button"
+    >
+        Add Task
+    </a>
+</div>

@@ -1,0 +1,15 @@
+<div>
+  <table id="task-list-table">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Completed</th>
+      </tr>
+    </thead>
+    <tbody id="task-list-body">
+      {% for task in tasks %}
+          {% include "tasks/partials/_task_row.html" %}
+      {%endfor %}
+    </tbody>
+  </table>
+</div>
